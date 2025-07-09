@@ -28,6 +28,18 @@ apps:
     command: bin/taos-explorer
     daemon: simple
     plugs: [network, network-bind]
+  taos:
+    command: bin/taos
+    plugs: [network]
+  taosBenchmark:
+    command: bin/taosBenchmark
+    plugs: [network]
+  taosdump:
+    command: bin/taosdump
+    plugs: [network]
+
+environment:
+  LD_LIBRARY_PATH: $SNAP/lib
 
 parts:
   tdengine:
@@ -40,6 +52,13 @@ parts:
       - bin/taos*
       - cfg/
       - driver/
+    override-stage: |
+      craftctl default
+      cd driver
+      ln -r -s libtaos.so.3.3.6.13 libtaos.so
+      ln -r -s libtaosnative.so.3.3.6.13 libtaosnative.so
+      ln -r -s libtaosws.so.3.3.6.13 libtaosws.so
+
   overlay:
     plugin: dump
     source: overlay
