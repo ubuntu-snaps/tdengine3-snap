@@ -30,7 +30,7 @@ apps:
     plugs: [network, network-bind]
 
 parts:
-  influxdb:
+  tdengine:
     plugin: dump
     source: https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-Linux-x64.tar.gz
     override-build: |
