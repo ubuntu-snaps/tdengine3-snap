@@ -54,7 +54,7 @@ parts:
       - driver/
     override-stage: |
       craftctl default
-      cd driver
+      cd ${CRAFT_STAGE}/driver
       ln -r -s libtaos.so.3.3.6.13 libtaos.so
       ln -r -s libtaosnative.so.3.3.6.13 libtaosnative.so
       ln -r -s libtaosws.so.3.3.6.13 libtaosws.so
