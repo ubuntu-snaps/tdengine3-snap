@@ -43,7 +43,7 @@ parts:
   overlay:
     plugin: dump
     source: overlay
-    build-dependencies:
+    build-packages:
       - git
     override-stage: |
       craftctl default
