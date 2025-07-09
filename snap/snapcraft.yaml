@@ -35,11 +35,11 @@ parts:
     source: https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-Linux-x64.tar.gz
     override-build: |
       craftctl default
-      tar xzf package.tar.gz
+      tar xzf package.tar.gz -C ${CRAFT_PART_INSTALL}
     stage:
       - bin/taos*
-      - cfg
-      - driver
+      - cfg/
+      - driver/
   overlay:
     plugin: dump
     source: overlay
