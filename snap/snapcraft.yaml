@@ -39,7 +39,7 @@ apps:
     plugs: [network]
 
 environment:
-  LD_LIBRARY_PATH: $SNAP/lib
+  LD_LIBRARY_PATH: $SNAP/driver
 
 parts:
   tdengine:
