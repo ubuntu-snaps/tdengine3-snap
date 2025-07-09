@@ -1,0 +1,48 @@
+name: tdengine3
+summary: TDengine Time Series Database
+description: TDengine Time Series Database
+version: "3.3.6.13"
+adopt-info: overlay
+
+base: core24
+grade: devel
+confinement: devmode
+
+platforms:
+  amd64:
+
+apps:
+  taosd:
+    command: bin/taosd
+    daemon: simple
+    plugs: [network, network-bind]
+  taosadapter:
+    command: bin/taosadapter
+    daemon: simple
+    plugs: [network, network-bind]
+  taoskeeper:
+    command: bin/taoskeeper
+    daemon: simple
+    plugs: [network, network-bind]
+  taos-explorer:
+    command: bin/taos-explorer
+    daemon: simple
+    plugs: [network, network-bind]
+
+parts:
+  influxdb:
+    plugin: dump
+    source: https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-Linux-x64.tar.gz
+    override-build: |
+      craftctl default
+      tar xzf package.tar.gz
+    stage:
+      - bin/taos*
+      - cfg
+      - driver
+  overlay:
+    plugin: dump
+    source: overlay
+    override-stage: |
+      craftctl default
+      craftctl set version="$(craftctl get version)+git$(git rev-parse --short HEAD)"
