@@ -43,6 +43,8 @@ parts:
   overlay:
     plugin: dump
     source: overlay
+    build-dependencies:
+      - git
     override-stage: |
       craftctl default
       craftctl set version="$(craftctl get version)+git$(git rev-parse --short HEAD)"
