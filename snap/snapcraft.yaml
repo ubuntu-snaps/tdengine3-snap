@@ -65,3 +65,7 @@ parts:
     override-stage: |
       craftctl default
       craftctl set version="$(craftctl get version)+git$(git rev-parse --short HEAD)"
+
+layout:
+  /etc/os-release:
+    symlink: $SNAP/etc/os-release
