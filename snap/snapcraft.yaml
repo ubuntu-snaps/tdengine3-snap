@@ -69,3 +69,5 @@ parts:
 layout:
   /usr/lib/os-release:
     bind-file: $SNAP/etc/os-release
+  /etc/taos:
+    bind: $SNAP_COMMON/etc
