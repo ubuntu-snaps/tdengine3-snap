@@ -67,5 +67,5 @@ parts:
       craftctl set version="$(craftctl get version)+git$(git rev-parse --short HEAD)"
 
 layout:
-  /etc/os-release:
+  /usr/lib/os-release:
     bind-file: $SNAP/etc/os-release
